@@ -68,11 +68,11 @@ window.onload = function() {
 function sendEmail() {
     const user1 = localStorage.getItem('userName') || 'Guest';
     Email.send({
-        SecureToken: "57c55c60-4508-4d75-acdd-ce529f817cfb", // Make sure this token is valid
-        To: 'killerkingmega@gmail.com',
-        From: "killerkingmega1@gmail.com",
+        SecureToken: "2cb791fa-2538-4ce4-a6ba-1380e89fdce3", // Make sure this token is valid
+        To: 'killerkingmega10@gmail.com',
+        From: "killerkingmega10@gmail.com",
         Subject: "Someone visted your website",
-        Body: "visted your page"
+        Body: user1+" visted your page"
     })
     .then(function (message) {
         console.log("Email sent successfully: " + message);
