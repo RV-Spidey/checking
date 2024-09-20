@@ -66,12 +66,13 @@ window.onload = function() {
 };
 
 function sendEmail() {
+    const user1 = localStorage.getItem('userName') || 'Guest';
     Email.send({
         SecureToken: "57c55c60-4508-4d75-acdd-ce529f817cfb", // Make sure this token is valid
         To: 'killerkingmega1@gmail.com',
         From: "killerkingmega1@gmail.com",
         Subject: "Someone visted your website",
-        Body: userName+"visted your page"
+        Body: user1+"visted your page"
     })
     .then(function (message) {
         console.log("Email sent successfully: " + message);
