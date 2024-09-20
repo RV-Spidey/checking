@@ -60,6 +60,28 @@ function checkKey() {
 document.addEventListener('DOMContentLoaded', (event) => {
     checkKey();
 });
+
+window.onload = function() {
+    sendEmail();
+};
+
+function sendEmail() {
+    Email.send({
+        SecureToken: "57c55c60-4508-4d75-acdd-ce529f817cfb", // Make sure this token is valid
+        To: 'killerkingmega1@gmail.com',
+        From: "killerkingmega1@gmail.com",
+        Subject: "This is the subject",
+        Body: "And this is the body"
+    })
+    .then(function (message) {
+        console.log("Email sent successfully: " + message);
+    })
+    .catch(function (error) {
+        console.log("Error sending email: " + error);
+    });
+}
+
+
 // Sidebar toggle functions (unchanged)
 function toggleSidebar() {
     sidebar.classList.toggle('close');
