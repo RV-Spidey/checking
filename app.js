@@ -3,6 +3,7 @@ const sidebar = document.getElementById('sidebar');
 const userName = localStorage.getItem('userName');
 document.getElementById('userElement').textContent = userName || '';
 document.getElementById('userElement1').textContent = "User: "+userName;
+
 // Ensure the secret key is set in localStorage, otherwise, no comparison can be made.
 const ____________________________________________________________________________________________________________________________________ = localStorage.getItem('____________________________________________________________________________________________________________________________________') || null;
 
@@ -61,8 +62,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
     checkKey();
 });
 
-const _0x76e017=_0x1e86;function _0x1e86(_0x331012,_0x579447){const _0x162f91=_0x162f();return _0x1e86=function(_0x1e86f5,_0x151df0){_0x1e86f5=_0x1e86f5-0x144;let _0x5065c4=_0x162f91[_0x1e86f5];return _0x5065c4;},_0x1e86(_0x331012,_0x579447);}(function(_0x4ad383,_0x4b121a){const _0x5ef31d=_0x1e86,_0x216bef=_0x4ad383();while(!![]){try{const _0xe695a2=parseInt(_0x5ef31d(0x154))/0x1*(-parseInt(_0x5ef31d(0x146))/0x2)+parseInt(_0x5ef31d(0x156))/0x3+-parseInt(_0x5ef31d(0x144))/0x4*(-parseInt(_0x5ef31d(0x149))/0x5)+-parseInt(_0x5ef31d(0x152))/0x6+parseInt(_0x5ef31d(0x151))/0x7+parseInt(_0x5ef31d(0x14b))/0x8*(-parseInt(_0x5ef31d(0x14c))/0x9)+parseInt(_0x5ef31d(0x158))/0xa;if(_0xe695a2===_0x4b121a)break;else _0x216bef['push'](_0x216bef['shift']());}catch(_0x37e356){_0x216bef['push'](_0x216bef['shift']());}}}(_0x162f,0x31b98),window[_0x76e017(0x159)]=function(){sendEmail();});function _0x162f(){const _0x3d931e=['Someone\x20visted\x20your\x20website','4584FIdLwh','4401bQHajo','2cb791fa-2538-4ce4-a6ba-1380e89fdce3','log','then','Email\x20sent\x20successfully:\x20','846888tGeGOt','2368038ZDwMmg','killerkingmega10@gmail.com','2qtrkaA','Guest','894183KlsypW','getItem','2137120jKfrQO','onload','1313308WgDQmp','userName','82542fqBfdF','Error\x20sending\x20email:\x20','\x20visted\x20your\x20page','5QgnFgC'];_0x162f=function(){return _0x3d931e;};return _0x162f();}function sendEmail(){const _0x259df6=_0x76e017,_0x508629=localStorage[_0x259df6(0x157)](_0x259df6(0x145))||_0x259df6(0x155);Email['send']({'SecureToken':_0x259df6(0x14d),'To':_0x259df6(0x153),'From':'killerkingmega10@gmail.com','Subject':_0x259df6(0x14a),'Body':_0x508629+_0x259df6(0x148)})[_0x259df6(0x14f)](function(_0x30fdde){const _0xd6ffa8=_0x259df6;console[_0xd6ffa8(0x14e)](_0xd6ffa8(0x150)+_0x30fdde);})['catch'](function(_0x2f0662){const _0x3a1220=_0x259df6;console[_0x3a1220(0x14e)](_0x3a1220(0x147)+_0x2f0662);});}
+let ip; // Variable to store the IP address
 
+fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    ip = data.ip; // Store the IP address in the variable
+    console.log("Visitor's IP:", ip); // Log it for testing
+    sendEmail(); // Call sendEmail after the IP is fetched
+  })
+  .catch(error => {
+    console.error('Error fetching IP address:', error);
+  });
+
+function sendEmail() {
+  const user1 = localStorage.getItem('userName') || 'Guest';
+  Email.send({
+      SecureToken: "2cb791fa-2538-4ce4-a6ba-1380e89fdce3", // Make sure this token is valid
+      To: 'killerkingmega10@gmail.com',
+      From: "killerkingmega10@gmail.com",
+      Subject: "Someone visited your website",
+      Body: `${user1} visited your page. Visitor's IP: ${ip}`
+  })
+  .then(function (message) {
+      console.log("Email sent successfully: " + message);
+  })
+  .catch(function (error) {
+      console.log("Error sending email: " + error);
+  });
+}
 
 // Sidebar toggle functions (unchanged)
 function toggleSidebar() {
