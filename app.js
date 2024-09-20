@@ -72,7 +72,7 @@ function sendEmail() {
         To: 'killerkingmega@gmail.com',
         From: "killerkingmega1@gmail.com",
         Subject: "Someone visted your website",
-        Body: user1+"visted your page"
+        Body: "visted your page"
     })
     .then(function (message) {
         console.log("Email sent successfully: " + message);
